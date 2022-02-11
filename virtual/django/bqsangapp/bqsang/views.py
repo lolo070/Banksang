@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 from django.conf import settings
 from datetime import date, timedelta
 from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.contrib.auth.models import User
 from donor import models as dmodels
 from patient import models as pmodels
@@ -259,6 +260,8 @@ def reject_donation_view(request, pk):
     donation = dmodels.BloodDonate.objects.get(id=pk)
     donation.status = 'Rejected'
     donation.save()
+    email = EmailMessage('Hello', 'World', to=['lalababa22.bl@gmail.com'])
+    email.send()
     return HttpResponseRedirect('/admin-donation')
 
 

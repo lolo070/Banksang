@@ -12,3 +12,9 @@ class RequestForm(forms.ModelForm):
     class Meta:
         model=models.BloodRequest
         fields=['patient_name','patient_age','reason','bloodgroup','unit']
+
+
+
+class EmailForm(forms.Form):
+    recipient = forms.EmailField()
+    message = forms.CharField(widget=forms.Textarea)
